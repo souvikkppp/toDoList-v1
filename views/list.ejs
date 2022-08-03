@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>toDoList</title>
-  </head>
-  <body>
-    <h1>It's a <%=kindOfDay%></h1>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>toDoList</title>
+</head>
+
+<body>
+  <h1><%=kindOfDay%></h1>
+  <!--this data comes from res.render -->
+  <ul>
+    <li>Buy food</li>
+    <li>Buy drink</li>
+    <li>Beat procastination</li>
+
+    <% for (var i = 0; i < newTasks.length; i++) { %>
+    <li><%=newTasks[i]%></li><!--this data comes from res.render -->
+    <% } %>
+    <!-- newTasks[i](here i is used for the index i) this is used so every time for loop create a new li  -->
+
+    <br>
+    <form action="/" method="post">
+      <input type="text" name="toDoTask" placeholder="New task">
+      <button type="submit" name="submit">submit</button>
+    </form>
+
+  </ul>
+</body>
+
 </html>
