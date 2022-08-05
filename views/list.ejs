@@ -4,28 +4,29 @@
 <head>
   <meta charset="utf-8">
   <title>toDoList</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-  <h1><%=kindOfDay%></h1>
-  <!--this data comes from res.render -->
-  <ul>
-    <li>Buy food</li>
-    <li>Buy drink</li>
-    <li>Beat procastination</li>
+  <div class="box" id="heading">
+    <h1><%= kindOfDay %></h1>
+    <!--this data comes from res.render -->
+  </div>
 
-    <% for (var i = 0; i < newTasks.length; i++) { %>
-    <li><%=newTasks[i]%></li><!--this data comes from res.render -->
+  <div class="box">
+    <% for (var i = 0; i < newListItems.length; i++) { %>
+    <div class="item">
+      <input type="checkbox">
+      <p><%= newListItems[i] %></p>
+    </div>
     <% } %>
+    <!-- newTasks this data comes from res.render -->
     <!-- newTasks[i](here i is used for the index i) this is used so every time for loop create a new li  -->
-
-    <br>
-    <form action="/" method="post">
-      <input type="text" name="toDoTask" placeholder="New task">
-      <button type="submit" name="submit">submit</button>
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="New item" autocomplete="off">
+      <button type="submit" name="button">+</button>
     </form>
-
-  </ul>
+  </div>
 </body>
 
 </html>
