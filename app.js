@@ -17,7 +17,7 @@ const workItems = [];
 
 app.get("/", (req, res) => {
 
-//EXAMPLE: 1
+//EXAMPLE: 1 & 2 code
 //let day = date.getDate();for date function
   const day = date.getDate();//here we taking getDate() function from our local date.js module
   //this making our code more manageble
