@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({
 })); //grab info from the html using post method
 app.use(express.static("public")); //to load static files like css and img
 
+let items = ["Buy food","Cook food","Eat food"];// this goes to our list.ejs using res.render and newTask ejs var
+let workItems = [];
+
 app.get("/", (req, res) => {
-  let items = ["Buy food","Cook food","Eat food"]; // this goes to our list.ejs using res.render and newTask ejs var
 
   let today = new Date(); //js method gives current date in a string ex: new Date(2022-08-01T15:15:48.034Z)
   let options = {
@@ -20,25 +22,30 @@ app.get("/", (req, res) => {
   };
   let day = today.toLocaleString("en-US", options);
 
-
-  //this render ejs file which is named list.ejs
-  res.render("list", { //we have to use all ejs variables in this place
-    kindOfDay: day,
-    newListItems: items
-  }); //**we sending items arrey to our to do list in our list.ejs**//
-  //we sending that our user put on the form
+  res.render("list", { listTitle: day, newListItems: items});
 });
 
 app.post("/", (req, res) => {
+
   let item = req.body.newItem;
+
+  if (req.body.list === "Work") {
+    workItems.push(item);
+    res.redirect("/work")
+ } else {
+
   items.push(item);
   res.redirect("/");
-}); //coz our res.render code is placed before our app.post
-//we create this items var before and now pushing our
-//post data (input by user) to items arrey
+ }
+});//here we use this logic by trgering buttons name attribte to determine which
+//route we are and to post and redirect data on same route
 
-
-
+app.get("/work", (req, res) =>{
+  res.render("list", {listTitle: "Work List", newListItems: workItems})
+});//here we sending the value of button for work route
+app.get("/about", (req, res) => {
+  res.render("about")
+});
 
 app.listen(3000, () => {
   console.log("server started on port 3000");

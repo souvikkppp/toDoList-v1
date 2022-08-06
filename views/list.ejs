@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>toDoList</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
+<%- include("header"); -%><!-- this is for layout -->
   <div class="box" id="heading">
-    <h1><%= kindOfDay %></h1>
+    <h1><%= listTitle %></h1>
     <!--this data comes from res.render -->
   </div>
 
@@ -24,9 +15,8 @@
     <!-- newTasks[i](here i is used for the index i) this is used so every time for loop create a new li  -->
     <form class="item" action="/" method="post">
       <input type="text" name="newItem" placeholder="New item" autocomplete="off">
-      <button type="submit" name="button">+</button>
-    </form>
+      <button type="submit" name="list"  value=<%= listTitle %>>+</button>
+    </form><!--here the value of button triger the if else in app.js its determin
+     the logic which route to post data and <redirect-->
   </div>
-</body>
-
-</html>
+<%- include("footer"); -%><!-- this is for layout -->
