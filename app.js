@@ -39,6 +39,7 @@ app.post("/", (req, res) => {
 
   items.push(item);
   res.redirect("/");
+  
  }
 });//here we use this logic by trgering buttons name attribte to determine which
 //route we are and to post and redirect data on same route
